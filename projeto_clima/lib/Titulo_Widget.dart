@@ -8,10 +8,10 @@ const TituloWidget({super.key, required this.titulo});
 @override
   Widget build(BuildContext context) {
   
-  return Text('titulo', style: TextStyle(
+  return Text(titulo, style: TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.bold,
-    color: CupertinoColors.secondaryLabel
+    color: const Color.fromARGB(153, 64, 64, 68)
   ),);
   }
 }

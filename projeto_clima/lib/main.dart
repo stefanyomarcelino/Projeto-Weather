@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:porjeto_clima/Titulo_Widget.dart';
 
@@ -9,128 +8,93 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
+        colorScheme: .fromSeed(
           seedColor: const Color.fromARGB(255, 18, 33, 73),
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('WheaterApp'),
-        ),
+        appBar: AppBar(title: Text('WheaterApp')),
         body: ListView(
-          padding: const EdgeInsets.all(40),
+          padding: EdgeInsets.all(40),
           children: [
-            // Cidade atual
             TituloWidget(titulo: 'Cidade atual'),
 
-            const Text(
+            Text(
               'São Bernador do campo',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
 
-            const Text(
+            Text(
               'Terça-feira, 20 de Outubro de 2026',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
 
-            const Divider(),
+            Divider(),
 
-            // Temperatura
             TituloWidget(titulo: 'Temperatura'),
 
-            const Text(
+            Text(
               'Temperatura atual: 26C',
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 43,
                 fontWeight: FontWeight.bold,
-                color: Colors.deepOrangeAccent,
+                color: const Color.fromARGB(255, 28, 82, 21),
               ),
             ),
 
-            const Text(
-              'Sensação termica: 30C',
-              style: TextStyle(fontSize: 28),
-            ),
+            Text('Sensação termica: 30C', style: TextStyle(fontSize: 28)),
 
-            const Divider(),
+            Divider(),
 
-            // Condição do tempo
             TituloWidget(titulo: 'Condição do tempo'),
+            Image.network('https://picsum.photos/id/1039/400/260'),
 
-            Image.network(
-              'https://openweathermap.org/img/wn/01d@2x.png',
-              width: 100,
-              height: 100,
-              alignment: Alignment.centerLeft,
-            ),
-
-            const Divider(),
-
-            // Detalhes
-            TituloWidget(titulo: 'Detalhes'),
+            Divider(),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // Primeiro grupo
                 Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.water_drop,
-                      color: Colors.blueAccent,
-                      size: 32,
+                      color: const Color.fromARGB(255, 50, 94, 52),
+                      size: 35,
                     ),
-                    const SizedBox(height: 8),
-                    const Text('65%'),
+                    Text('65%'),
                   ],
                 ),
 
+                // Segundo grupo
                 Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.air,
-                      color: Color.fromARGB(255, 160, 195, 255),
-                      size: 32,
+                      color: const Color.fromARGB(255, 50, 94, 52),
+                      size: 35,
                     ),
-                    const SizedBox(height: 8),
-                    const Text('12 Km/h'),
+                    Text('12 Km/h'),
                   ],
                 ),
 
+                // Terceiro grupo
                 Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.umbrella,
-                      color: Color.fromARGB(255, 79, 61, 126),
-                      size: 32,
+                      color: const Color.fromARGB(255, 50, 94, 52),
+                      size: 35,
                     ),
-                    const SizedBox(height: 8),
-                    const Text('30%'),
+                    Text('30%'),
                   ],
                 ),
               ],
-            ),
-
-            const Divider(),
-
-            // Atualização
-            TituloWidget(titulo: 'Atualização'),
-
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Clique aqui'),
             ),
           ],
         ),
