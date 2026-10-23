@@ -1,102 +1,127 @@
+
 import 'package:flutter/material.dart';
-import 'package:porjeto_clima/Titulo_Widget.dart';
+import 'package:porjeto_clima/scream/Clima_atual.dart';
+import 'package:porjeto_clima/scream/previsao_semana.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: .fromSeed(
-          seedColor: const Color.fromARGB(255, 18, 33, 73),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color.fromARGB(255, 18, 33, 73),
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text('WheaterApp')),
-        body: ListView(
-          padding: EdgeInsets.all(40),
-          children: [
-            TituloWidget(titulo: 'Cidade atual'),
+      home: HomeScreen(),
+    );
+  }
+}
 
-            Text(
-              'São Bernador do campo',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-            Text(
-              'Terça-feira, 20 de Outubro de 2026',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ClimaApp'),
+        centerTitle: true,
+      ),
 
-            Divider(),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
 
-            TituloWidget(titulo: 'Temperatura'),
 
-            Text(
-              'Temperatura atual: 26C',
-              style: TextStyle(
-                fontSize: 43,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 28, 82, 21),
+                  // ====================================================//
+
+            children: [
+              Icon(
+                Icons.park,
+                 size: 100,
+                color: Color.fromARGB(255, 28, 82, 21),
+                ),
+
+                SizedBox(height: 30),
+              SizedBox(
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ClimaAtual(),
+                      ),
+                    );
+                  },
+
+
+                  // ====================================================//
+
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 28, 82, 21),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+
+
+                  // ====================================================//
+
+
+                  child: Text(
+                    'Clima atual',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
-            ),
 
-            Text('Sensação termica: 30C', style: TextStyle(fontSize: 28)),
+              SizedBox(height: 18),
 
-            Divider(),
+            
+              // ====================================================//
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PrevisaoSemana(),
+                      ),
+                    );
+                  },
 
-            TituloWidget(titulo: 'Condição do tempo'),
-            Image.network('https://picsum.photos/id/1039/400/260'),
 
-            Divider(),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // Primeiro grupo
-                Column(
-                  children: [
-                    Icon(
-                      Icons.water_drop,
-                      color: const Color.fromARGB(255, 50, 94, 52),
-                      size: 35,
+                  // ====================================================//
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color.fromARGB(255, 28, 82, 21),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                        color: const Color.fromARGB(255, 28, 82, 21),
+                      ),
                     ),
-                    Text('65%'),
-                  ],
+                  ),
+                  child: Text(
+                    'Previsão da semana',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-
-                // Segundo grupo
-                Column(
-                  children: [
-                    Icon(
-                      Icons.air,
-                      color: const Color.fromARGB(255, 50, 94, 52),
-                      size: 35,
-                    ),
-                    Text('12 Km/h'),
-                  ],
-                ),
-
-                // Terceiro grupo
-                Column(
-                  children: [
-                    Icon(
-                      Icons.umbrella,
-                      color: const Color.fromARGB(255, 50, 94, 52),
-                      size: 35,
-                    ),
-                    Text('30%'),
-                  ],
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
