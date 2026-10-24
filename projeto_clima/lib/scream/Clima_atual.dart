@@ -35,7 +35,7 @@ class ClimaAtual extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'São Bernador do campo',
+                    'São Bernardo do campo',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,

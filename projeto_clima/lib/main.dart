@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:porjeto_clima/scream/Clima_atual.dart';
+import 'package:porjeto_clima/scream/detalhes_avancado.dart';
 import 'package:porjeto_clima/scream/previsao_semana.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -29,10 +31,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ClimaApp'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text('ClimaApp'), centerTitle: true),
 
       body: Center(
         child: Padding(
@@ -40,17 +39,16 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
 
-
-                  // ====================================================//
-
+            // ====================================================//
             children: [
               Icon(
                 Icons.park,
-                 size: 100,
+                size: 100,
                 color: Color.fromARGB(255, 28, 82, 21),
-                ),
+              ),
 
-                SizedBox(height: 30),
+              SizedBox(height: 30),
+
               SizedBox(
                 height: 55,
                 child: ElevatedButton(
@@ -63,9 +61,7 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
 
-
                   // ====================================================//
-
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 28, 82, 21),
                     foregroundColor: Colors.white,
@@ -74,10 +70,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-
                   // ====================================================//
-
-
                   child: Text(
                     'Clima atual',
                     style: TextStyle(fontSize: 16),
@@ -87,7 +80,6 @@ class HomeScreen extends StatelessWidget {
 
               SizedBox(height: 18),
 
-            
               // ====================================================//
               SizedBox(
                 width: double.infinity,
@@ -102,7 +94,6 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
 
-
                   // ====================================================//
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -114,8 +105,44 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+
                   child: Text(
                     'Previsão da semana',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ),
+
+              // ====================================================//
+              
+              SizedBox(height: 18),
+
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetalhesAvancados(),
+                      ),
+                    );
+                  },
+
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color.fromARGB(255, 28, 82, 21),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                        color: const Color.fromARGB(255, 28, 82, 21),
+                      ),
+                    ),
+                  ),
+
+                  child: Text(
+                    'Detalhes avançados',
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
