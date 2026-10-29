@@ -1,208 +1,242 @@
+
 import 'package:flutter/material.dart';
+import 'package:porjeto_clima/scream/previsao_semana.dart';
 
 class DetalhesAvancados extends StatelessWidget {
-   DetalhesAvancados({super.key});
+  DetalhesAvancados({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF8F6FC),
+
       appBar: AppBar(
-        title:  Text('Detalhes avançados🌲'),
+        title: Text('Detalhes avançados🌲'),
+        centerTitle: true,
+        backgroundColor: Color(0xFFF8F6FC),
+        foregroundColor: Color(0xFF24242C),
+        elevation: 0,
       ),
 
       body: ListView(
-        padding: EdgeInsets.all(16),
-
-        // ================== seções da tela ===================//
+        padding: EdgeInsets.all(20),
 
         children: [
-          Card(
-            child: ListTile(
-              leading:  Icon(Icons.warning),
-              title:  Text('Chuva forte'),
-              subtitle:  Text(
-                'Previsto para hoje, a partir das 18h',
-              ),
-              trailing:  Icon(Icons.chevron_right),
+
+          // ================== Condição do tempo ==================//
+
+          Text(
+            'Condição do tempo',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF24242C),
             ),
           ),
 
+          SizedBox(height: 12),
+
           Card(
-            child: ListTile(
-              leading:  Icon(Icons.warning),
-              title:  Text('Temperatura elevada'),
-              subtitle:  Text(
-                'Temperatura acima de 30°C prevista para amanhã',
-              ),
-              trailing:  Icon(Icons.chevron_right),
+            color: Color(0xFFF2F0F8),
+            elevation: 1,
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
             ),
-          ),
 
-           SizedBox(height: 20),
-
-          Divider(),
-
-          // ================== Indicadores ===================//
-
-          GridView.count( // ultilizando o GridView
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics:  NeverScrollableScrollPhysics(),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-
-            children: [
-              Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                     Icon(Icons.wb_sunny),
-                    SizedBox(height: 8),
-                     Text(
-                      '6',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                     Text('Índice UV'),
-                  ],
+            child: Stack(
+              children: [
+                Image.network(
+                  'https://picsum.photos/id/28/1200/600',
+                  height: 180,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-              ),
 
-              Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.speed),
-                     SizedBox(height: 8),
-                     Text(
-                      '1013 hPa',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                Positioned(
+                  left: 16,
+                  bottom: 16,
+                  child: Text(
+                    '26°C',
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                    Text('Pressão'),
-                  ],
-                ),
-              ),
-
-              Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.visibility),
-                     SizedBox(height: 8),
-                     Text(
-                      '10 km',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                     Text('Visibilidade'),
-                  ],
-                ),
-              ),
-
-              Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.wb_twilight),
-                    SizedBox(height: 8),
-                     Text(
-                      '06:15',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                     Text('Nascer do sol'),
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-        Divider(),
-
-        // ================== Condição do tempo ===================//
-
-
-           SizedBox(height: 20),
-
-          Stack( // uso do Stack
-            children: [
-              Image.network(
-                'https://picsum.photos/id/28/1200/600',
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-
-               Positioned(
-                left: 16,
-                bottom: 16,
-                child: Text(
-                  '26°C',
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 243, 245, 243),
                   ),
                 ),
-              ),
 
-               Positioned(
-                right: 16,
-                top: 16,
-                child: Icon(
-                  Icons.wb_sunny,
-                  color:Color.fromARGB(255, 246, 248, 246),
-                  size: 32,
+                Positioned(
+                  right: 16,
+                  top: 16,
+                  child: Icon(
+                    Icons.wb_sunny,
+                    color: Colors.white,
+                    size: 32,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
 
+          SizedBox(height: 24),
 
-        // ================== Tags ===================//
+          // ================== Alertas ==================//
 
-      Divider(),
+          Text(
+            'Alertas',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF24242C),
+            ),
+          ),
+
+          SizedBox(height: 8),
+
+          Card(
+            color: Color(0xFFF2F0F8),
+            elevation: 1,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
+
+            child: ListTile(
+              leading: Icon(
+                Icons.warning_amber_rounded,
+                color: Color(0xFF245D2A),
+              ),
+              title: Text('Chuva forte'),
+              subtitle: Text(
+                'Prevista para hoje, a partir das 18h',
+              ),
+            ),
+          ),
+
+          Card(
+            color: Color(0xFFF2F0F8),
+            elevation: 1,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
+
+            child: ListTile(
+              leading: Icon(
+                Icons.warning_amber_rounded,
+                color: Color(0xFF245D2A),
+              ),
+              title: Text('Temperatura elevada'),
+              subtitle: Text('Acima de 30°C amanhã'),
+            ),
+          ),
 
           SizedBox(height: 20),
 
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              Chip(
-                avatar: Icon(Icons.water_drop),
-                label:  Text('Chuva forte'),
-              ),
+  
 
-              Chip(
-                avatar: Icon(Icons.wb_sunny),
-                label:  Text('UV alto'),
-                
-              ),
+          // ================== Previsão da semana ==================//
+          Card(
+            color: Color(0xFFF2F0F8),
+            elevation: 1,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
 
-              Chip(
-                label:  Text('Vento moderado'),
-              ),
+            child: Padding(
+              padding: EdgeInsets.all(16),
 
-              Chip(
-                label:  Text('Umidade alta'),
-              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
 
-              Chip(
-                avatar:  Icon(Icons.ac_unit),
-                label:  Text('Frente fria'),
+                children: [
+                  Text(
+                    'Previsão da semana',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF24242C),
+                    ),
+                  ),
+
+                  SizedBox(height: 16),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('SEG'),
+                            SizedBox(height: 8),
+                            Icon(
+                              Icons.wb_sunny,
+                              color: Color(0xFF245D2A),
+                            ),
+                            SizedBox(height: 8),
+                            Text('28° / 20°'),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('TER'),
+                            SizedBox(height: 8),
+                            Icon(
+                              Icons.cloud,
+                              color: Color(0xFF245D2A),
+                            ),
+                            SizedBox(height: 8),
+                            Text('25° / 18°'),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text('QUA'),
+                            SizedBox(height: 8),
+                            Icon(
+                              Icons.cloudy_snowing,
+                              color: Color(0xFF245D2A),
+                            ),
+                            SizedBox(height: 8),
+                            Text('22° / 17°'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 16),
+
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFF8F6FC),
+                        foregroundColor: Color(0xFF405A96),
+                        elevation: 1,
+                      ),
+
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PrevisaoSemana(),
+                          ),
+                        );
+                      },
+
+                      child: Text('Ver previsão completa'),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
+          SizedBox(height: 16),
         ],
       ),
     );

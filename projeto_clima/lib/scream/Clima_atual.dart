@@ -65,7 +65,7 @@ class ClimaAtual extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Temperatura atual: 26C',
+                  '26C',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 43,
