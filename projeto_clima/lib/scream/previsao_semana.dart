@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:porjeto_clima/Titulo_Widget.dart';
 
 class PrevisaoSemana extends StatelessWidget {
-  PrevisaoSemana({super.key});
+  final String cidade;
+
+  PrevisaoSemana({
+    super.key,
+    required this.cidade,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +31,20 @@ class PrevisaoSemana extends StatelessWidget {
           TituloWidget(titulo: 'Previsão da semana'),
 
           SizedBox(height: 12),
+
+          // ================== Cidade selecionada ==================//
+
+          Text(
+            cidade,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF245D2A),
+            ),
+          ),
+
+          SizedBox(height: 20),
 
           // ================== Faixa de temperatura ==================//
 
@@ -86,7 +105,6 @@ class PrevisaoSemana extends StatelessWidget {
 
           // ================== Resumo do dia ==================//
 
-
           TituloWidget(titulo: 'Resumo do dia'),
 
           SizedBox(height: 10),
@@ -131,7 +149,6 @@ class PrevisaoSemana extends StatelessWidget {
           SizedBox(height: 20),
 
           // ================== Próximos dias ==================//
-          
 
           TituloWidget(titulo: 'Próximos dias'),
 

@@ -1,16 +1,23 @@
+
 import 'package:flutter/material.dart';
 import 'package:porjeto_clima/Titulo_Widget.dart';
+import 'package:porjeto_clima/scream/previsao_semana.dart';
 
 // ====================================================//
 
 class ClimaAtual extends StatelessWidget {
-  ClimaAtual({super.key});
+  final String cidade;
+
+  ClimaAtual({
+    super.key,
+    required this.cidade,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('clima atual'),
+        title: Text('Clima atual'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -35,7 +42,7 @@ class ClimaAtual extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'São Bernardo do campo',
+                    cidade,
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -65,7 +72,7 @@ class ClimaAtual extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  '26C',
+                  '26°C',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 43,
@@ -77,7 +84,7 @@ class ClimaAtual extends StatelessWidget {
                 SizedBox(height: 8),
 
                 Text(
-                  'Sensação termica: 30C',
+                  'Sensação térmica: 30°C',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 28),
                 ),
@@ -156,9 +163,9 @@ class ClimaAtual extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('65%'),
-                Text('12 Km/h'),
-                Text('30%'),
+                Text('Umidade'),
+                Text('Vento'),
+                Text('Chuva'),
               ],
             ),
           ),
@@ -189,6 +196,25 @@ class ClimaAtual extends StatelessWidget {
                 child: Text('Última atualização: 14:30'),
               ),
             ),
+          ),
+
+          // ====================================================//
+
+          // f) Previsão da semana
+          SizedBox(height: 20),
+
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PrevisaoSemana(
+                    cidade: cidade,
+                  ),
+                ),
+              );
+            },
+            child: Text('Ver previsão da semana'),
           ),
         ],
       ),

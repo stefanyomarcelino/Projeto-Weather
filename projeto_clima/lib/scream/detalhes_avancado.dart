@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:porjeto_clima/scream/previsao_semana.dart';
 
 class DetalhesAvancados extends StatelessWidget {
-  DetalhesAvancados({super.key});
+  final String cidade;
+
+  DetalhesAvancados({
+    super.key,
+    required this.cidade,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +27,19 @@ class DetalhesAvancados extends StatelessWidget {
         padding: EdgeInsets.all(20),
 
         children: [
+
+          // ================== Cidade ==================//
+
+          Text(
+            cidade,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF245D2A),
+            ),
+          ),
+
+          SizedBox(height: 20),
 
           // ================== Condição do tempo ==================//
 
@@ -132,9 +150,8 @@ class DetalhesAvancados extends StatelessWidget {
 
           SizedBox(height: 20),
 
-  
-
           // ================== Previsão da semana ==================//
+
           Card(
             color: Color(0xFFF2F0F8),
             elevation: 1,
@@ -224,7 +241,9 @@ class DetalhesAvancados extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PrevisaoSemana(),
+                            builder: (context) => PrevisaoSemana(
+                              cidade: cidade,
+                            ),
                           ),
                         );
                       },
@@ -236,9 +255,11 @@ class DetalhesAvancados extends StatelessWidget {
               ),
             ),
           ),
+
           SizedBox(height: 16),
         ],
       ),
     );
   }
 }
+

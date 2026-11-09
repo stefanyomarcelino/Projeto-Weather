@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:porjeto_clima/scream/Clima_atual.dart';
 import 'package:porjeto_clima/scream/detalhes_avancado.dart';
-import 'package:porjeto_clima/scream/previsao_semana.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,32 +33,27 @@ class ListContest extends StatelessWidget {
       titulo: 'São Bernardo do Campo',
       icone: Icons.location_city,
       descricao: '25°C - Ensolarado',
-      destino: ClimaAtual(),
     ),
 
     CatalogoItem(
       titulo: 'Santo André',
       icone: Icons.location_city,
       descricao: '18°C - Nublado',
-      destino: ClimaAtual(),
     ),
 
     CatalogoItem(
       titulo: 'Diadema',
       icone: Icons.location_city,
       descricao: '22°C - Parcialmente nublado',
-      destino: ClimaAtual(),
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        CidadeCard(item: secoes[0]),
-        CidadeCard(item: secoes[1]),
-        CidadeCard(item: secoes[2]),
-      ],
+      children: secoes.map((item) {
+        return CidadeCard(item: item);
+      }).toList(),
     );
   }
 }
@@ -76,9 +71,15 @@ class CidadeCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 15),
 
       child: ListTile(
-        leading: Icon(item.icone, color: Color.fromARGB(255, 28, 82, 21)),
+        leading: Icon(
+          item.icone,
+          color: Color.fromARGB(255, 28, 82, 21),
+        ),
 
-        title: Text(item.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(
+          item.titulo,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
 
         subtitle: Text(item.descricao),
 
@@ -90,7 +91,11 @@ class CidadeCard extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => item.destino),
+            MaterialPageRoute(
+              builder: (context) => ClimaAtual(
+                cidade: item.titulo,
+              ),
+            ),
           );
         },
       ),
@@ -106,20 +111,30 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('ClimaApp'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('ClimaApp'),
+        centerTitle: true,
+      ),
 
       body: ListView(
         padding: EdgeInsets.all(24),
 
         children: [
-          Icon(Icons.park, size: 100, color: Color.fromARGB(255, 28, 82, 21)),
+          Icon(
+            Icons.park,
+            size: 100,
+            color: Color.fromARGB(255, 28, 82, 21),
+          ),
 
           SizedBox(height: 20),
 
           Text(
             'São Paulo',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
           ),
 
           SizedBox(height: 8),
@@ -137,19 +152,21 @@ class HomeScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16),
           ),
-          
+
           Divider(),
-        
-                  ElevatedButton(
+
+          ElevatedButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetalhesAvancados(),
+                  builder: (context) => DetalhesAvancados(
+                  cidade: 'São Paulo',
+                ),
                 ),
               );
             },
-            child: Text('Veja os detalhes avançados '),
+            child: Text('Veja os detalhes avançados'),
           ),
 
           SizedBox(height: 20),
@@ -167,12 +184,10 @@ class CatalogoItem {
   final String titulo;
   final IconData icone;
   final String descricao;
-  final Widget destino;
 
   CatalogoItem({
     required this.titulo,
     required this.icone,
     required this.descricao,
-    required this.destino,
   });
 }
