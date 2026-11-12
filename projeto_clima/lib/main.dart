@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:porjeto_clima/scream/Clima_atual.dart';
 import 'package:porjeto_clima/scream/detalhes_avancado.dart';
+
+import 'login.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
           seedColor: Color.fromARGB(255, 18, 33, 73),
         ),
       ),
-      home: HomeScreen(),
+      home: Login(),
     );
   }
 }
@@ -71,15 +72,9 @@ class CidadeCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 15),
 
       child: ListTile(
-        leading: Icon(
-          item.icone,
-          color: Color.fromARGB(255, 28, 82, 21),
-        ),
+        leading: Icon(item.icone, color: Color.fromARGB(255, 28, 82, 21)),
 
-        title: Text(
-          item.titulo,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text(item.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
 
         subtitle: Text(item.descricao),
 
@@ -92,9 +87,7 @@ class CidadeCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ClimaAtual(
-                cidade: item.titulo,
-              ),
+              builder: (context) => ClimaAtual(cidade: item.titulo),
             ),
           );
         },
@@ -111,30 +104,20 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ClimaApp'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text('ClimaApp'), centerTitle: true),
 
       body: ListView(
         padding: EdgeInsets.all(24),
 
         children: [
-          Icon(
-            Icons.park,
-            size: 100,
-            color: Color.fromARGB(255, 28, 82, 21),
-          ),
+          Icon(Icons.park, size: 100, color: Color.fromARGB(255, 28, 82, 21)),
 
           SizedBox(height: 20),
 
           Text(
             'São Paulo',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
           ),
 
           SizedBox(height: 8),
@@ -160,9 +143,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetalhesAvancados(
-                  cidade: 'São Paulo',
-                ),
+                  builder: (context) => DetalhesAvancados(cidade: 'São Paulo'),
                 ),
               );
             },
